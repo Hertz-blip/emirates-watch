@@ -1,0 +1,89 @@
+/* ---- Tokens (matches masthead site) ---- */
+:root{
+    --paper: #FAFAF7;
+    --ink: #1A1A18;
+    --ink-soft: #5B5B57;
+    --crimson: #A11D2B;
+    --mustard: #C9A227;
+    --rule: #D8D5CC;
+}
+
+*{ box-sizing: border-box; }
+
+.body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* ---- Mini Masthead ---- */
+.masthead-mini{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 3px solid var(--ink);
+}
+
+.logo-mini{
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.back-link{
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ---- Article ---- */
+.article{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 30px 24px 60px 24px;
+}
+
+.eyebrow{
+    color: var(--crimson);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.headline{
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0 0 14px 0;
+}
+
+.byline{
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 24px 0;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+}
+
+/* ---- Photo Placeholder ---- */
+.photo-placeholder{
+    display: block;
+    background-color: var(--ink);
+    width: 100%;
+    height: 460px;
+    margin-bottom: 24px;
+    object-fit: contain;
+}
+
+.body-text p{
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--ink);
+    margin: 0 0 18px 0;
+}

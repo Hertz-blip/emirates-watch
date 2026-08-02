@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Emirates Watch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-mobile.css">
+</head>
+<body class="body">
+
+<!--Masthead / Logo + Search-->
+<header class="masthead">
+    <div class="logo">THE EMIRATES<br>WATCH</div>
+    <!--Decorative search icon, not functional-->
+    <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+</header>
+
+<!--Breaking News Ticker - scrolling marquee animation-->
+<div class="ticker-wrap">
+    <div class="ticker-track">
+        BREAKING: UNIDENTIFIED CRAFT PHOTOGRAPHED OVER DUBAI SKYLINE &mdash; SOURCE OF IMAGES UNCONFIRMED &nbsp;&bull;&nbsp; WITNESSES DESCRIBE "NON-HUMAN" FIGURE CAPTURED IN LEAKED PHOTOS &nbsp;&bull;&nbsp; BREAKING: UNIDENTIFIED CRAFT PHOTOGRAPHED OVER DUBAI SKYLINE &mdash; SOURCE OF IMAGES UNCONFIRMED &nbsp;&bull;&nbsp;
+    </div>
+</div>
+
+<!--Main Story / Hero-->
+<section class="hero">
+    <img src="./Photos/C3.jpg" alt="Wide shot of the craft over the Dubai skyline" class="photo-placeholder hero-photo">
+    <p class="eyebrow">DUBAI &mdash; TOP STORY</p>
+    <h1 class="headline">Mysterious Craft Photographed Over Dubai Skyline, Origin Unknown</h1>
+    <p class="lead-paragraph">
+        Several residents have shared photos this week showing an unidentified craft hovering above the
+        Dubai skyline, though no two accounts agree on exactly where or when the images were taken.
+        Authorities have not confirmed any unusual activity, and a request for comment sent to Dubai Police
+        has gone unanswered as of publication. Aviation analysts who reviewed the photos say the craft's
+        silhouette does not match any registered aircraft or known drone model.
+    </p>
+</section>
+
+<!--Trending Sidebar - links back to collaborator ARG content-->
+<section class="trending">
+    <h2 class="section-title">Trending Now</h2>
+    <ul class="trending-list">
+        <li>
+            <a href="story-footage.html">Leaked footage analysis: what the audio really says</a>
+            <span class="byline">audio enhancement credited to Y. Zar Aung</span>
+        </li>
+        <li>
+            <a href="story-fragment.html">Second photo of the craft surfaces, engineers weigh in</a>
+            <span class="byline">structural analysis credited to A. Mishelov</span>
+        </li>
+        <li>
+            <a href="story-flyers.html">Flyers appear across SAE Dubai overnight, students report</a>
+            <span class="byline">flyer design traced to S. Schultz</span>
+        </li>
+        <li>
+            <a href="story-sketches.html">Early concept sketches allegedly leaked from case file</a>
+            <span class="byline">attributed to J. Kitzberger</span>
+        </li>
+    </ul>
+</section>
+
+<!--Stories Grid - 2 real links (craft / entity) + 2 fake filler stories-->
+<section class="stories">
+    <h2 class="section-title">More Stories</h2>
+
+    <!--Real story 1: links to craft article-->
+    <a href="story-craft.html" class="story-card">
+        <img src="./Photos/C2.jpg" alt="Photograph of the unidentified craft" class="photo-placeholder thumb">
+        <div class="story-text">
+            <h3>Aviation Experts Baffled by Photos of Unidentified Craft Over Al Qudra</h3>
+            <p>Short description placeholder text goes here.</p>
+        </div>
+    </a>
+
+    <!--Real story 2: links to entity article-->
+    <a href="story-entity.html" class="story-card">
+        <img src="./Photos/E2.jpg" alt="Entity from the security footage" class="photo-placeholder thumb">
+        <div class="story-text">
+            <h3>Photos Allegedly Show Figure Captured Near Dubai Marina</h3>
+            <p>Short description placeholder text goes here.</p>
+        </div>
+    </a>
+
+    <!--Fake filler story 1: no real target, purely for realism-->
+    <a href="#" class="story-card">
+        <img src="./Photos/Gold_Rates.jpg" alt="Gold rates filler story" class="photo-placeholder thumb">
+        <div class="story-text">
+            <h3>Gold Rates Steady Ahead of Weekend Trading</h3>
+            <p>Short description placeholder text goes here.</p>
+        </div>
+    </a>
+
+    <!--Fake filler story 2: no real target, purely for realism-->
+    <a href="#" class="story-card">
+        <img src="./Photos/RTA.jpg" alt="RTA diversions filler story" class="photo-placeholder thumb">
+        <div class="story-text">
+            <h3>RTA Announces Diversions Ahead of Marathon Weekend</h3>
+            <p>Short description placeholder text goes here.</p>
+        </div>
+    </a>
+</section>
+
+<!--Footer - fake social links, all route to error-404.html for the ARG glitch reveal-->
+<footer class="footer">
+    <div class="social-links">
+        <a href="error-404.html" aria-label="Facebook">FB</a>
+        <a href="error-404.html" aria-label="X / Twitter">X</a>
+        <a href="error-404.html" aria-label="Instagram">IG</a>
+    </div>
+    <p class="footer-note">&copy; The Emirates Watch. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

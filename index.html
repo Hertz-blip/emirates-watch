@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Emirates Watch</title>
+    <!--This page has no visible content - it just decides which layout to
+        send the visitor to, then redirects instantly. GitHub Pages requires
+        a file named exactly index.html at the root, so this fills that role
+        instead of duplicating either layout.-->
+    <script>
+        var isMobile = window.matchMedia("(max-width: 768px)").matches;
+        window.location.replace(isMobile ? "index-mobile.html" : "index-desktop.html");
+    </script>
+</head>
+<body>
+    <!--Fallback link in case JavaScript is disabled-->
+    <p>Redirecting&hellip; if nothing happens, <a href="index-desktop.html">click here</a>.</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 &mdash; Page Not Found</title>
+    <link rel="stylesheet" href="error-404.css">
+</head>
+<body class="body-404">
+
+<!--Full-bleed feed: photo 1 and photo 2 fill the entire page and swap between
+    each other like a corrupted security feed, with the 404 message sitting
+    on top as a HUD overlay rather than a big centered heading-->
+<div class="feed-stage">
+
+    <img src="./Photos/C1.jpg" alt="Leaked craft close-up" class="photo-frame photo-1">
+
+    <img src="./Photos/E1.jpg" alt="Leaked entity close-up" class="photo-frame photo-2">
+
+    <!--Signal-loss black flash, noise grain, scanlines and a horizontal tear all sit above the photos-->
+    <div class="black-flash"></div>
+    <div class="grain-overlay"></div>
+    <div class="scanlines"></div>
+    <div class="tear-line"></div>
+
+    <!--HUD overlay: styled like a broken CCTV/security monitor readout, not a big glossy heading-->
+    <div class="hud-overlay">
+        <div class="hud-top">
+            <span class="rec-dot"></span>
+            <span>REC</span>
+            <span class="timestamp">CAM_04 &mdash; FEED INTERRUPTED</span>
+        </div>
+
+        <div class="hud-center">
+            <p class="hud-code">ERR 404</p>
+            <p class="hud-message">PAGE NOT FOUND</p>
+            <p class="hud-submessage">signal lost &mdash; record does not exist</p>
+        </div>
+
+        <div class="hud-bottom">
+            <span>STATUS: OFFLINE</span>
+            <!--Uses browser history so it returns to whichever layout (mobile or desktop) the user came from-->
+            <a href="index-mobile.html" class="return-link" onclick="history.back(); return false;">return to site &rarr;</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
