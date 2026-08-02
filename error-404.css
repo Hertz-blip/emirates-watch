@@ -267,3 +267,14 @@ html, body{
 .return-link:hover{
     color: rgba(235, 235, 230, 0.9);
 }
+
+.exhibition-note-404{
+    pointer-events: none;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: rgba(235, 235, 230, 0.35);
+    text-align: center;
+    margin: 12px 0 0 0;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(235, 235, 230, 0.2);
+}
