@@ -1,277 +1,138 @@
-/* ---- Tokens ---- */
-:root{
-    --paper: #FAFAF7;
-    --ink: #1A1A18;
-    --ink-soft: #5B5B57;
-    --crimson: #A11D2B;
-    --mustard: #C9A227;
-    --rule: #D8D5CC;
-    /* Grows with the viewport instead of staying capped at 1100px forever,
-       so ultrawide monitors don't just get a narrow column with huge empty
-       margins on either side. Never shrinks below 1100px on normal screens. */
-    --max-width: clamp(1100px, 65vw, 1600px);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Emirates Watch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-desktop.css">
+</head>
+<body class="body">
 
-*{ box-sizing: border-box; }
+<!--Masthead / Logo + Nav + Search-->
+<header class="masthead">
+    <div class="logo">THE EMIRATES WATCH</div>
+    <!--Full nav row, desktop has room for it unlike mobile-->
+    <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#">UAE</a>
+        <a href="#">World</a>
+        <a href="#">Investigations</a>
+        <a href="#">Opinion</a>
+    </nav>
+    <!--Decorative search icon, not functional-->
+    <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+</header>
 
-.body{
-    margin: 0;
-    padding: 0;
-    background-color: var(--paper);
-    color: var(--ink);
-    font-family: 'Source Sans 3', sans-serif;
-}
+<!--Breaking News Ticker - scrolling marquee animation-->
+<div class="ticker-wrap">
+    <div class="ticker-track">
+        BREAKING: UNIDENTIFIED CRAFT PHOTOGRAPHED OVER DUBAI SKYLINE &mdash; SOURCE OF IMAGES UNCONFIRMED &nbsp;&bull;&nbsp; WITNESSES DESCRIBE "NON-HUMAN" FIGURE CAPTURED IN LEAKED PHOTOS &nbsp;&bull;&nbsp; BREAKING: UNIDENTIFIED CRAFT PHOTOGRAPHED OVER DUBAI SKYLINE &mdash; SOURCE OF IMAGES UNCONFIRMED &nbsp;&bull;&nbsp;
+    </div>
+</div>
 
-/* ---- Masthead ---- */
-.masthead{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 60px;
-    border-bottom: 3px solid var(--ink);
-}
+<!--Main Story + Trending Sidebar, side by side on desktop-->
+<section class="hero-row">
 
-.logo{
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: clamp(1.875rem, 1.4vw, 2.375rem);
-    letter-spacing: 0.5px;
-}
+    <!--Main Story / Hero-->
+    <div class="hero">
+        <a href="story-craft.html" class="hero-link">
+            <img src="./Photos/C3.jpg" alt="Wide shot of the craft over the Dubai skyline" class="photo-placeholder hero-photo">
+            <p class="eyebrow">DUBAI &mdash; TOP STORY</p>
+            <h1 class="headline">Mysterious Craft Photographed Over Dubai Skyline, Origin Unknown</h1>
+        </a>
+        <p class="lead-paragraph">
+            Several residents have shared photos this week showing an unidentified craft hovering above the
+            Dubai skyline, though no two accounts agree on exactly where or when the images were taken.
+            Authorities have not confirmed any unusual activity, and a request for comment sent to Dubai Police
+            has gone unanswered as of publication. Aviation analysts who reviewed the photos say the craft's
+            silhouette does not match any registered aircraft or known drone model.
+        </p>
+    </div>
 
-.nav{
-    display: flex;
-    gap: 28px;
-}
+    <!--Trending Sidebar - links back to collaborator ARG content-->
+    <aside class="trending">
+        <h2 class="section-title">Trending Now</h2>
+        <ul class="trending-list">
+            <li>
+                <a href="story-footage.html">Leaked footage analysis: what the audio really says</a>
+                <span class="byline">audio enhancement credited to Y. Zar Aung</span>
+            </li>
+            <li>
+                <a href="story-fragment.html">Second photo of the figure surfaces, engineers weigh in</a>
+                <span class="byline">structural analysis credited to A. Mishelov</span>
+            </li>
+            <li>
+                <a href="story-flyers.html">Flyers appear across SAE Dubai overnight, students report</a>
+                <span class="byline">flyer design traced to S. Schultz</span>
+            </li>
+            <li>
+                <a href="story-sketches.html">Early concept sketches allegedly leaked from case file</a>
+                <span class="byline">attributed to J. Kitzberger</span>
+            </li>
+        </ul>
+    </aside>
 
-.nav a{
-    color: var(--ink);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: clamp(0.875rem, 0.5vw, 1.0625rem);
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-}
+</section>
 
-.nav a:hover{
-    color: var(--crimson);
-}
+<!--Stories Grid - 2 real links (craft / entity) + 2 fake filler stories-->
+<section class="stories">
+    <h2 class="section-title">More Stories</h2>
+    <div class="stories-grid">
 
-.search-icon{
-    color: var(--ink-soft);
-    flex-shrink: 0;
-}
+        <!--Real story 1: links to craft article-->
+        <a href="story-craft.html" class="story-card">
+            <img src="./Photos/C2.jpg" alt="Photograph of the unidentified craft" class="photo-placeholder thumb">
+            <div class="story-text">
+                <h3>Aviation Experts Baffled by Photos of Unidentified Craft Over Al Qudra</h3>
+                <p>A jogger's photo captured the craft hovering above the skyline before it vanished into the clouds.</p>
+            </div>
+        </a>
 
-/* ---- Breaking News Ticker ---- */
-.ticker-wrap{
-    background-color: var(--crimson);
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 9px 0;
-}
+        <!--Real story 2: links to entity article-->
+        <a href="story-entity.html" class="story-card">
+            <img src="./Photos/E2.jpg" alt="Entity from the security footage" class="photo-placeholder thumb">
+            <div class="story-text">
+                <h3>Photos Allegedly Show Figure Captured Near Dubai Marina</h3>
+                <p>The figure was reportedly photographed slipping between the pillars of an overpass near Dubai Marina.</p>
+            </div>
+        </a>
 
-.ticker-track{
-    display: inline-block;
-    color: white;
-    font-weight: 700;
-    font-size: clamp(0.875rem, 0.5vw, 1.0625rem);
-    letter-spacing: 0.3px;
-    padding-left: 100%;
-    animation: ticker 26s linear infinite;
-}
+        <!--Fake filler story 1: no real target, purely for realism-->
+        <a href="#" class="story-card">
+            <img src="./Photos/Gold_Rates.jpg" alt="Gold rates filler story" class="photo-placeholder thumb">
+            <div class="story-text">
+                <h3>Gold Rates Steady Ahead of Weekend Trading</h3>
+                <p>Local gold prices held firm this week despite fluctuations in the global market.</p>
+            </div>
+        </a>
 
-@keyframes ticker{
-    0%{ transform: translateX(0); }
-    100%{ transform: translateX(-100%); }
-}
+        <!--Fake filler story 2: no real target, purely for realism-->
+        <a href="#" class="story-card">
+            <img src="./Photos/RTA.jpg" alt="RTA diversions filler story" class="photo-placeholder thumb">
+            <div class="story-text">
+                <h3>RTA Announces Diversions Ahead of Marathon Weekend</h3>
+                <p>The RTA tram pictured above will run modified schedules as diversions take effect this weekend.</p>
+            </div>
+        </a>
 
-/* ---- Photo Placeholders ---- */
-.photo-placeholder{
-    display: block;
-    background-color: #E6E3D9;
-    object-fit: cover;
-}
+    </div>
+</section>
 
-.hero-photo{
-    width: 100%;
-    height: clamp(480px, 25vw, 620px);
-    margin-bottom: 18px;
-    object-fit: cover;
-}
+<!--Footer - fake social links, all route to error-404.html for the ARG glitch reveal-->
+<footer class="footer">
+    <div class="social-links">
+        <a href="error-404.html" aria-label="Facebook">FB</a>
+        <a href="error-404.html" aria-label="X / Twitter">X</a>
+        <a href="error-404.html" aria-label="Instagram">IG</a>
+    </div>
+    <p class="footer-note">&copy; The Emirates Watch. All rights reserved.</p>
+    <p class="exhibition-note">For more information, visit our exhibition at SAE Dubai &mdash; Thursday, 20 August 2026, 4:00&ndash;5:00 PM, Classrooms 2 &amp; 3, Block 16.</p>
+</footer>
 
-.thumb{
-    width: clamp(110px, 7vw, 150px);
-    height: clamp(110px, 7vw, 150px);
-    flex-shrink: 0;
-    font-size: 11px;
-}
-
-/* ---- Hero Row: main story + trending side by side ---- */
-.hero-row{
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 36px 60px;
-    display: flex;
-    gap: 40px;
-    border-bottom: 1px solid var(--rule);
-}
-
-.hero{
-    flex: 2.2;
-}
-
-.hero-link{
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-}
-
-.eyebrow{
-    color: var(--crimson);
-    font-weight: 700;
-    font-size: clamp(0.75rem, 0.5vw, 0.9375rem);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 0 0 8px 0;
-}
-
-.headline{
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.375rem, 2.4vw, 3.375rem);
-    line-height: 1.15;
-    margin: 0 0 16px 0;
-}
-
-.lead-paragraph{
-    font-size: clamp(1rem, 0.9vw, 1.25rem);
-    line-height: 1.75;
-    color: var(--ink-soft);
-    margin: 0;
-    max-width: clamp(620px, 40vw, 900px);
-}
-
-/* ---- Trending Sidebar ---- */
-.trending{
-    flex: 1;
-    border-left: 1px solid var(--rule);
-    padding-left: 30px;
-}
-
-.section-title{
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.25rem, 1.1vw, 1.625rem);
-    margin: 0 0 14px 0;
-    border-left: 4px solid var(--mustard);
-    padding-left: 10px;
-}
-
-.trending-list{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.trending-list li{
-    padding: 12px 0;
-    border-bottom: 1px dashed var(--rule);
-}
-
-.trending-list a{
-    color: var(--ink);
-    text-decoration: none;
-    font-size: clamp(0.875rem, 0.9vw, 1.125rem);
-    font-weight: 600;
-    display: block;
-}
-
-.byline{
-    display: block;
-    font-size: clamp(0.6875rem, 0.6vw, 0.875rem);
-    color: var(--ink-soft);
-    font-style: italic;
-    margin-top: 3px;
-}
-
-/* ---- Stories Grid ---- */
-.stories{
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 36px 60px;
-}
-
-.stories-grid{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 40px;
-}
-
-.story-card{
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    text-decoration: none;
-    color: var(--ink);
-    padding: 14px 0;
-    border-bottom: 1px solid var(--rule);
-    cursor: pointer;
-}
-
-.story-text h3{
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1rem, 1vw, 1.25rem);
-    margin: 0 0 4px 0;
-    line-height: 1.3;
-}
-
-.story-text p{
-    font-size: clamp(0.8125rem, 0.7vw, 1rem);
-    color: var(--ink-soft);
-    margin: 0;
-}
-
-/* ---- Footer ---- */
-.footer{
-    padding: 40px 60px;
-    text-align: center;
-    border-top: 3px solid var(--ink);
-}
-
-.social-links{
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 14px;
-}
-
-.social-links a{
-    color: var(--ink);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: clamp(0.8125rem, 0.4vw, 0.9375rem);
-    border: 1px solid var(--ink);
-    border-radius: 50%;
-    width: clamp(34px, 2vw, 42px);
-    height: clamp(34px, 2vw, 42px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-links a:hover{
-    background-color: var(--ink);
-    color: var(--paper);
-}
-
-.footer-note{
-    font-size: clamp(0.75rem, 0.4vw, 0.875rem);
-    color: var(--ink-soft);
-    margin: 0;
-}
-
-.exhibition-note{
-    font-size: clamp(0.75rem, 0.4vw, 0.875rem);
-    color: var(--ink-soft);
-    margin: 10px 0 0 0;
-    padding-top: 10px;
-    border-top: 1px dashed var(--rule);
-}
+</body>
+</html>
