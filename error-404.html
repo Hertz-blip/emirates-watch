@@ -8,6 +8,19 @@
 </head>
 <body class="body-404">
 
+<!--Seizure warning interstitial - sits on top of everything and blocks the
+    glitch effects from view until dismissed. Uses a tap/click button instead
+    of hover, so it works the same on phones as it does on desktop.-->
+<div class="seizure-overlay" id="seizureOverlay">
+    <p class="seizure-title">Flashing Content Warning</p>
+    <p class="seizure-text">This page contains rapid flickering, flashing, and high-contrast
+        visual effects. It may not be suitable for people with photosensitive epilepsy or
+        related sensitivities.</p>
+    <button type="button" class="seizure-button" onclick="document.getElementById('seizureOverlay').style.display='none';">
+        I Understand, Continue &rarr;
+    </button>
+</div>
+
 <!--Full-bleed feed: photo 1 and photo 2 fill the entire page and swap between
     each other like a corrupted security feed, with the 404 message sitting
     on top as a HUD overlay rather than a big centered heading-->
