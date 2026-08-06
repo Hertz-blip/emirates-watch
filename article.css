@@ -1,329 +1,97 @@
-/* ---- Base ---- */
+/* ---- Tokens (matches masthead site) ---- */
+:root{
+    --paper: #FAFAF7;
+    --ink: #1A1A18;
+    --ink-soft: #5B5B57;
+    --crimson: #A11D2B;
+    --mustard: #C9A227;
+    --rule: #D8D5CC;
+}
+
 *{ box-sizing: border-box; }
 
-html, body{
+.body{
     margin: 0;
     padding: 0;
-    height: 100%;
-    background-color: #000;
-    overflow: hidden;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
 }
 
-.body-404{
-    font-family: 'Courier New', Consolas, monospace;
-}
-
-/* ---- Seizure Warning Overlay ---- */
-.seizure-overlay{
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    background-color: #000;
+/* ---- Mini Masthead ---- */
+.masthead-mini{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 32px;
-    gap: 16px;
-}
-
-.seizure-title{
-    font-size: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(235, 235, 230, 0.9);
-    margin: 0;
-}
-
-.seizure-text{
-    font-size: 14px;
-    line-height: 1.6;
-    color: rgba(235, 235, 230, 0.6);
-    max-width: 420px;
-    margin: 0;
-}
-
-.seizure-button{
-    margin-top: 8px;
-    padding: 12px 24px;
-    background: transparent;
-    border: 1px solid rgba(235, 235, 230, 0.5);
-    color: rgba(235, 235, 230, 0.9);
-    font-family: inherit;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-.seizure-button:hover,
-.seizure-button:active{
-    background-color: rgba(235, 235, 230, 0.15);
-}
-
-/* ---- Feed Stage: fills the whole viewport ---- */
-.feed-stage{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: #050505;
-    overflow: hidden;
-}
-
-/* Photo frames fill the entire stage - once a real <img> replaces the
-   placeholder <span>, set the img to width:100%; height:100%; object-fit:contain
-   and everything layered on top (grain, tear, HUD) keeps working unchanged */
-.photo-frame{
-    position: absolute;
-    inset: 0;
-    display: block;
-    background-color: #0D0D0D;
-    filter: grayscale(0.55) contrast(1.05) brightness(0.85);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Irregular, uneven timing reads as corrupted footage rather than a clean
-   digital crossfade - short violent flickers mixed with longer holds, and a
-   couple of brief double-exposure moments where both are faintly visible */
-.photo-1{
-    animation: feed-cut-1 6.4s infinite steps(1);
-}
-
-.photo-2{
-    animation: feed-cut-2 6.4s infinite steps(1);
-}
-
-@keyframes feed-cut-1{
-    0%{ opacity: 1; }
-    3%{ opacity: 0.15; }
-    4%{ opacity: 1; }
-    31%{ opacity: 1; }
-    32%{ opacity: 0; }
-    33%{ opacity: 0.3; }
-    34%{ opacity: 0; }
-    58%{ opacity: 0; }
-    59%{ opacity: 1; }
-    83%{ opacity: 1; }
-    84%{ opacity: 0.1; }
-    86%{ opacity: 1; }
-    97%{ opacity: 1; }
-    98%{ opacity: 0.2; }
-    100%{ opacity: 1; }
-}
-
-@keyframes feed-cut-2{
-    0%{ opacity: 0; }
-    3%{ opacity: 0.9; }
-    4%{ opacity: 0; }
-    31%{ opacity: 0; }
-    32%{ opacity: 1; }
-    33%{ opacity: 0.7; }
-    34%{ opacity: 1; }
-    58%{ opacity: 1; }
-    59%{ opacity: 0; }
-    83%{ opacity: 0; }
-    84%{ opacity: 0.85; }
-    86%{ opacity: 0; }
-    97%{ opacity: 0; }
-    98%{ opacity: 0.75; }
-    100%{ opacity: 0; }
-}
-
-/* ---- Black Flash: brief full signal-loss frames, timed with the harder cuts ---- */
-.black-flash{
-    position: absolute;
-    inset: 0;
-    z-index: 5;
-    background-color: #000;
-    opacity: 0;
-    pointer-events: none;
-    animation: signal-loss 6.4s infinite steps(1);
-}
-
-@keyframes signal-loss{
-    0%{ opacity: 0; }
-    3.2%{ opacity: 0.85; }
-    3.6%{ opacity: 0; }
-    32.3%{ opacity: 0.9; }
-    32.6%{ opacity: 0; }
-    84.2%{ opacity: 0.7; }
-    84.6%{ opacity: 0; }
-    98.1%{ opacity: 0.5; }
-    98.4%{ opacity: 0; }
-    100%{ opacity: 0; }
-}
-
-/* ---- Grain: subtle monochrome static, not a colorful cartoon texture ---- */
-.grain-overlay{
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.15;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    animation: grain-flicker 0.2s infinite steps(2);
-}
-
-@keyframes grain-flicker{
-    0%{ opacity: 0.09; }
-    50%{ opacity: 0.19; }
-    100%{ opacity: 0.12; }
-}
-
-/* ---- Scanlines: faint CRT/monitor lines, low opacity so it reads as texture not decoration ---- */
-.scanlines{
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.4) 0px,
-        rgba(0, 0, 0, 0.4) 1px,
-        transparent 1px,
-        transparent 3px
-    );
-}
-
-/* ---- Tear Line: a single thin horizontal desync, appears rarely and briefly ---- */
-.tear-line{
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: rgba(230, 230, 230, 0.5);
-    z-index: 4;
-    pointer-events: none;
-    animation: tear 6.4s infinite steps(1);
-}
-
-@keyframes tear{
-    0%{ top: -10px; opacity: 0; }
-    32%{ top: -10px; opacity: 0; }
-    32.4%{ top: 41%; opacity: 1; }
-    33%{ top: 41%; opacity: 0; }
-    83%{ top: -10px; opacity: 0; }
-    84%{ top: 67%; opacity: 1; }
-    84.6%{ top: 67%; opacity: 0; }
-    100%{ top: -10px; opacity: 0; }
-}
-
-/* ---- HUD Overlay: styled like a real broken monitor readout ---- */
-.hud-overlay{
-    position: absolute;
-    inset: 0;
-    z-index: 6;
-    pointer-events: none;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    padding: 28px 32px;
-    color: rgba(235, 235, 230, 0.88);
+    padding: 16px 24px;
+    border-bottom: 3px solid var(--ink);
 }
 
-.hud-top{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    letter-spacing: 1.5px;
+.logo-mini{
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 18px;
 }
 
-.rec-dot{
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #C6362F;
-    animation: rec-blink 1s infinite steps(1);
-}
-
-@keyframes rec-blink{
-    0%{ opacity: 1; }
-    50%{ opacity: 0.15; }
-    100%{ opacity: 1; }
-}
-
-.timestamp{
-    margin-left: 10px;
-    color: rgba(235, 235, 230, 0.55);
-}
-
-.hud-center{
-    text-align: center;
-    margin: auto 0;
-}
-
-.hud-code{
-    font-size: 15px;
-    letter-spacing: 3px;
-    color: rgba(235, 235, 230, 0.6);
-    margin: 0 0 6px 0;
-}
-
-.hud-message{
-    font-size: clamp(28px, 6vw, 54px);
-    font-weight: 700;
-    letter-spacing: 4px;
-    margin: 0;
-    /* Subtle 1-2px RGB fringe instead of large neon duplicate text - reads as
-       a genuine signal artifact rather than a designed glitch font effect */
-    text-shadow:
-        1px 0 rgba(198, 54, 47, 0.55),
-        -1px 0 rgba(70, 170, 190, 0.45);
-    animation: text-jitter 6.4s infinite steps(1);
-}
-
-@keyframes text-jitter{
-    0%{ transform: translate(0, 0); }
-    3%{ transform: translate(1px, 0); }
-    4%{ transform: translate(-1px, 0); }
-    32%{ transform: translate(0, 0); }
-    32.5%{ transform: translate(-2px, 1px); }
-    33%{ transform: translate(0, 0); }
-    84%{ transform: translate(0, 0); }
-    84.3%{ transform: translate(2px, -1px); }
-    84.6%{ transform: translate(0, 0); }
-    100%{ transform: translate(0, 0); }
-}
-
-.hud-submessage{
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: rgba(235, 235, 230, 0.45);
-    margin: 10px 0 0 0;
-}
-
-.hud-bottom{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: rgba(235, 235, 230, 0.4);
-}
-
-.return-link{
-    pointer-events: auto;
-    color: rgba(235, 235, 230, 0.55);
+.back-link{
+    color: var(--ink-soft);
     text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.return-link:hover{
-    color: rgba(235, 235, 230, 0.9);
+/* ---- Article ---- */
+.article{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 30px 24px 60px 24px;
 }
 
-.exhibition-note-404{
-    pointer-events: none;
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    color: rgba(235, 235, 230, 0.35);
-    text-align: center;
-    margin: 12px 0 0 0;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(235, 235, 230, 0.2);
+.eyebrow{
+    color: var(--crimson);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.headline{
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0 0 14px 0;
+}
+
+.byline{
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 24px 0;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+}
+
+/* ---- Photo Placeholder ---- */
+.photo-placeholder{
+    display: block;
+    background-color: var(--paper);
+    width: 100%;
+    height: 460px;
+    margin-bottom: 24px;
+    object-fit: contain;
+}
+
+.body-text p{
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--ink);
+    margin: 0 0 18px 0;
+}
+
+.exhibition-note{
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: 20px 0 0 0;
+    padding-top: 16px;
+    border-top: 1px dashed var(--rule);
 }
